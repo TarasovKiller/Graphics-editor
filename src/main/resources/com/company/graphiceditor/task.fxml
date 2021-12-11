@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.Color?>
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.graphiceditor.Controller">
+   <children>
+      <MenuBar prefHeight="26.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Файл">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#save" text="Сохранить" />
+                  <MenuItem mnemonicParsing="false" onAction="#exit" text="Выход" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Помощь">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#instruction" text="Инструкция" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Pane fx:id="pane" layoutX="2.0" layoutY="28.0" prefHeight="370.0" prefWidth="268.0" style="-fx-background-color: white;" styleClass="pane">
+         <children>
+            <Group layoutX="139.0" layoutY="89.0" translateX="-50.0" />
+         </children></Pane>
+      <GridPane hgap="5.0" layoutX="278.0" layoutY="37.0" prefHeight="345.0" prefWidth="278.0" vgap="5.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="232.60001220703126" minHeight="10.0" prefHeight="169.6000183105469" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="281.7999847412109" minHeight="10.0" prefHeight="94.19998779296876" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="266.2" minHeight="0.0" prefHeight="91.80001220703122" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="343.0" prefWidth="86.0" style="-fx-border-color: gray;" GridPane.rowSpan="2">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="62.0" text="Палитра" />
+                    <ToggleButton fx:id="circleButton">
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/circle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="palette" />
+                     </toggleGroup>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                    </ToggleButton>
+                    <ToggleButton fx:id="rectangleButton" toggleGroup="$palette">
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/rectangle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                    </ToggleButton>
+                    <ToggleButton fx:id="lineButton" alignment="TOP_CENTER" toggleGroup="$palette">
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/line.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                    </ToggleButton>
+                  <ToggleButton fx:id="ellipseButton" alignment="TOP_CENTER" toggleGroup="$palette">
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/ellipse.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ToggleButton>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="222.0" style="-fx-border-color: gray;" GridPane.columnIndex="1" GridPane.columnSpan="2">
+               <children>
+                  <Label text="Цвет контура" />
+                  <ColorPicker fx:id="strokeColor">
+                     <value>
+                        <Color />
+                     </value>
+                  </ColorPicker>
+                  <Label text="Цвет заливки" />
+                  <ColorPicker fx:id="fillColor">
+                     <value>
+                        <Color />
+                     </value>
+                  </ColorPicker>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="40.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </VBox>
+            <GridPane hgap="5.0" prefHeight="82.0" prefWidth="186.0" style="-fx-border-color: gray;" vgap="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.40001220703124" minWidth="10.0" prefWidth="50.79998779296875" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.79998779296875" minWidth="10.0" prefWidth="80.40001220703124" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label prefHeight="18.0" prefWidth="58.0" text="Контур" />
+                  <Label text="Толщина" GridPane.rowIndex="1" />
+                  <Label text="Тип  " GridPane.rowIndex="2" />
+                  <ChoiceBox fx:id="strokeType" prefHeight="28.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="strokeWidth" onAction="#widthAction" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </GridPane>
+            <GridPane prefHeight="81.0" prefWidth="168.0" style="-fx-border-color: gray;" GridPane.columnSpan="2" GridPane.rowIndex="2">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.199951171875" minWidth="10.0" prefWidth="56.800024414062506" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="105.80001220703124" minWidth="10.0" prefWidth="53.4" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="105.80001220703124" minWidth="10.0" prefWidth="59.80000000000001" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="43.599951171875" minHeight="10.0" prefHeight="24.5999755859375" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="52.00003662109375" minHeight="10.0" prefHeight="31.199987792968752" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="52.799963378906256" minHeight="10.0" prefHeight="26.400012207031253" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label prefHeight="18.0" prefWidth="198.0" text="Размер изображения pxl" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                  <Label text="Ширина" GridPane.rowIndex="1" />
+                  <Label text="Высота" GridPane.rowIndex="2" />
+                  <TextField fx:id="paneWidth" onAction="#setPaneBorderWidth" prefWidth="61.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="paneHeight" onAction="#setPaneBorderHeight" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+               </padding>
+            </GridPane>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </GridPane>
+   </children>
+</AnchorPane>
