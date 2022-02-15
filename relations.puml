@@ -1,0 +1,141 @@
+@startuml
+class com.company.graphiceditor.CircleFigure {
++ double getHeight()
++ double getWidth()
++ void shrinkDown()
++ void expandUp()
++ void shrinkLeft()
++ void expandRight()
+}
+class com.company.graphiceditor.FrameFigure {
+- Shape figure
+- Frame frame
++ Class<? extends Shape> figureClass
++ void moveRight()
++ void moveLeft()
++ void moveUp()
++ void moveDown()
++ void setFrameAndFigure(Shape,Frame)
++ boolean isInBorder(Pane,double,double)
++ boolean isInBorder(Pane)
++ void setInBorder(Pane)
++ double getWidth()
++ double getHeight()
++ void setShape(Shape)
++ void shrinkDown()
++ void expandUp()
++ void shrinkLeft()
++ void expandRight()
++ Shape getFigure()
+}
+class com.company.graphiceditor.Frame {
++ void formIn(Shape,double,double)
++ void formIn(Shape)
+}
+class com.company.graphiceditor.Main {
++ void start(Stage)
++ {static} void main(String[])
+}
+class com.company.graphiceditor.PaneBorder {
+~ Pane pane
+}
+class com.company.graphiceditor.FigureCreator {
+~ Color strokeColor
+~ String strokeType
+~ double strokeWidth
++ void reset(Color,String,Color,double,double,double)
++ void setStrokeWidth(double)
++ void setStrokeType(String)
++ void setFillColor(Color)
++ void setStrokeColor(Color)
++ CircleFigure createCircle()
++ RectangleFigure createRectangle()
++ LineFigure createLine()
++ EllipseFigure createEllipse()
++ Double[] strokeDashTypeConverter(String)
+}
+class com.company.graphiceditor.EllipseFigure {
++ double getHeight()
++ double getWidth()
++ void shrinkDown()
++ void expandUp()
++ void shrinkLeft()
++ void expandRight()
+}
+class com.company.graphiceditor.LineFigure {
++ double getWidth()
++ double getHeight()
++ void shrinkDown()
++ void expandUp()
++ void shrinkLeft()
++ void expandRight()
+}
+interface com.company.graphiceditor.Moveable {
+~ void moveLeft()
+~ void moveRight()
+~ void moveUp()
+~ void moveDown()
+}
+class com.company.graphiceditor.RectangleFigure {
++ void shrinkDown()
++ void expandUp()
++ void shrinkLeft()
++ void expandRight()
+}
+class com.company.graphiceditor.Controller {
+~ AnchorPane anchorPane
+~ Pane pane
+~ ColorPicker strokeColor
+~ ChoiceBox<String> strokeType
+~ ColorPicker fillColor
+~ ToggleButton circleButton
+~ ToggleButton lineButton
+~ ToggleButton rectangleButton
+~ ToggleButton ellipseButton
+~ TextField strokeWidth
+~ TextField paneWidth
+~ TextField paneHeight
+~ Frame frame
+~ Shape activeFigure
+~ String[] types
+~ FigureCreator figureCreator
+~ FrameFigure frameFigure
+~ ArrayList<String> input
+~ PaneBorder paneBorder
++ {static} void captureAndSavePane(Pane)
++ {static} void captureAndSavePane(Pane,int,int)
++ void initialize(URL,ResourceBundle)
+- void removingFrameFigure()
+- void createFrameFigure(double,double)
++ void save()
++ void exit()
++ void instruction()
++ void setPaneBorderWidth()
++ void setPaneBorderHeight()
++ void widthAction()
++ void strokeTypeAction()
+}
+interface com.company.graphiceditor.Transformable {
+~ void shrinkDown()
+~ void expandUp()
+~ void shrinkLeft()
+~ void expandRight()
+}
+
+
+com.company.graphiceditor.Transformable <|.. com.company.graphiceditor.CircleFigure
+javafx.scene.shape.Circle <|-- com.company.graphiceditor.CircleFigure
+com.company.graphiceditor.Moveable <|.. com.company.graphiceditor.FrameFigure
+com.company.graphiceditor.Transformable <|.. com.company.graphiceditor.FrameFigure
+javafx.scene.Group <|-- com.company.graphiceditor.FrameFigure
+javafx.scene.shape.Rectangle <|-- com.company.graphiceditor.Frame
+javafx.application.Application <|-- com.company.graphiceditor.Main
+javafx.scene.shape.Rectangle <|-- com.company.graphiceditor.PaneBorder
+com.company.graphiceditor.Transformable <|.. com.company.graphiceditor.EllipseFigure
+javafx.scene.shape.Ellipse <|-- com.company.graphiceditor.EllipseFigure
+com.company.graphiceditor.Transformable <|.. com.company.graphiceditor.LineFigure
+javafx.scene.shape.Line <|-- com.company.graphiceditor.LineFigure
+com.company.graphiceditor.Transformable <|.. com.company.graphiceditor.RectangleFigure
+javafx.scene.shape.Rectangle <|-- com.company.graphiceditor.RectangleFigure
+javafx.fxml.Initializable <|.. com.company.graphiceditor.Controller
+@enduml

@@ -15,7 +15,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("task.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400, Color.LIGHTBLUE);
-        stage.setTitle("Graphic Editor");
+        stage.setTitle("Graphics Editor");
         stage.setResizable(false);
         try {
             Image icon = new Image(getClass().getResource("images/logo.png").toString());

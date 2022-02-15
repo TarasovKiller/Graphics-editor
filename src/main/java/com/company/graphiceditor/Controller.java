@@ -194,8 +194,6 @@ public class Controller implements Initializable {
 
         if (frameFigure.isInBorder(pane, mouseEventX, mouseEventY)) {
             pane.getChildren().add(frameFigure);
-
-
         }
 
     }
